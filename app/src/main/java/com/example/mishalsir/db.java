@@ -1,6 +1,7 @@
 package com.example.mishalsir;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -29,4 +30,18 @@ public class db extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
         sqLiteDatabase.execSQL(q);
     }
+    Cursor getdata()
+    {
+        String q="select * from student";
+        SQLiteDatabase sqLiteDatabase=this.getReadableDatabase();
+        Cursor c=sqLiteDatabase.rawQuery(q,null);
+        return c;
+    }
+    void delete(int id)
+    {
+        String q="delete from student where id="+id;
+        SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
+        sqLiteDatabase.execSQL(q);
+    }
+//    https://play.google.com/store/apps/details?id=com.eduven.cc.pizzaRecipes
 }
